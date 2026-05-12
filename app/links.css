@@ -1,0 +1,101 @@
+/*
+  SliceTown link variants — color transitions use Transition Ease In Out.
+  "Current" = active page: use aria-current="page" on the anchor.
+*/
+
+@layer components {
+  .link-contact,
+  .link-instagram,
+  .link-copyright,
+  .link-footer,
+  .link-address {
+    border-radius: 0;
+    padding: 0;
+    transition-property: color, text-decoration-color;
+    transition-duration: var(--transition-ease-in-out-duration);
+    transition-timing-function: var(--transition-ease-in-out-timing);
+    transition-delay: var(--transition-ease-in-out-delay);
+  }
+
+  /* Contact */
+  .link-contact {
+    color: var(--color-dark-1);
+    text-decoration: none;
+    text-decoration-line: none;
+  }
+
+  .link-contact:hover {
+    color: var(--color-black);
+    text-decoration: none;
+  }
+
+  .link-contact[aria-current="page"] {
+    color: var(--color-black);
+    text-decoration: none;
+  }
+
+  /* Instagram */
+  .link-instagram {
+    color: var(--color-dark-1);
+    text-decoration: none;
+  }
+
+  .link-instagram:hover {
+    color: var(--color-dark-3);
+  }
+
+  .link-instagram[aria-current="page"] {
+    color: var(--color-dark-3);
+  }
+
+  /* Copyright */
+  .link-copyright {
+    color: var(--color-primary-1);
+    text-decoration: none;
+  }
+
+  .link-copyright:hover {
+    color: var(--color-gray-1);
+    text-decoration: none;
+  }
+
+  .link-copyright[aria-current="page"] {
+    color: var(--color-gray-1);
+    text-decoration: none;
+  }
+
+  /* Footer */
+  .link-footer {
+    color: var(--color-gray-1);
+    text-decoration: none;
+  }
+
+  .link-footer:hover {
+    color: var(--color-primary-1);
+    text-decoration: none;
+  }
+
+  .link-footer[aria-current="page"] {
+    color: var(--color-primary-1);
+    text-decoration: none;
+  }
+
+  /* Address */
+  .link-address {
+    color: var(--color-gray-1);
+    text-decoration: underline;
+    text-decoration-line: underline;
+  }
+
+  .link-address:hover {
+    color: var(--color-black);
+    text-decoration: underline;
+    text-decoration-line: underline;
+  }
+
+  .link-address[aria-current="page"] {
+    color: var(--color-address-link-current);
+    text-decoration: underline;
+    text-decoration-line: underline;
+  }
+}

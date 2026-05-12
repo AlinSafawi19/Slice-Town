@@ -1,15 +1,277 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter+Display:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "./typography.css";
+@import "./links.css";
+@import "./components.css";
+
+/*
+  Layout widths (keep in sync with lib/breakpoints.ts):
+  - mobile:  max 808px
+  - tablet:  809px–1199px
+  - desktop: min 1200px
+  Typography M/L tiers use 810px / 1200px (see app/typography.css).
+*/
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-heading: var(--font-calistoga), "Calistoga", ui-serif, Georgia, serif;
+  --font-body: "Inter Display", ui-sans-serif, system-ui, sans-serif;
+
+  /*
+    Transition "Ease In Out"
+    cubic-bezier(0.44, 0, 0.56, 1) · 0.45s · delay 0s
+  */
+  --transition-ease-in-out-duration: 450ms;
+  --transition-ease-in-out-delay: 0s;
+  --transition-ease-in-out-timing: cubic-bezier(0.44, 0, 0.56, 1);
+  --transition-ease-in-out: var(--transition-ease-in-out-duration)
+    var(--transition-ease-in-out-timing) var(--transition-ease-in-out-delay);
+
+  /*
+    Transition "Spring" (Time-based)
+    Time 0.4s · Bounce 0.2 · Delay 0s
+    CSS uses a cubic-bezier approximation; use lib/transitions spring.motion for true spring in Motion.
+  */
+  --transition-spring-duration: 400ms;
+  --transition-spring-delay: 0s;
+  --transition-spring-bounce: 0.2;
+  --transition-spring-timing: cubic-bezier(0.26, 0.92, 0.32, 1.03);
+  --transition-spring: var(--transition-spring-duration)
+    var(--transition-spring-timing) var(--transition-spring-delay);
+
+  /* Address link — current (active) */
+  --color-address-link-current: #111111;
+
+  /* SliceTown palette (used by custom utility classes below) */
+  --color-black: #000000;
+  --color-gray-1: #f8f4e0;
+  --color-gray-2: #4d4d4d;
+  --color-white: #ffffff;
+  --color-dark-1: #3d2101;
+  --color-dark-2: #4b2b07;
+  --color-dark-3: #57350f;
+  --color-dark-4: #51381b;
+  --color-primary-1: #fab037;
+  /* Framer export name (alias) */
+  --Primary_1: var(--color-primary-1);
+  --White: var(--color-white);
+  --color-primary-2: #e57300;
+  --color-primary-3: #ff9a27;
+  --color-primary-4: #ffab36;
+  --color-primary-5: #ffb948;
+  --color-primary-6: #ffab36;
+  --color-primary-7: #ff9a27;
+  --color-primary-8: #e57300;
+  --color-primary-9: #c56714;
+
+  /* Breakpoints (used only in docs/comments; kept for consistency) */
+  --breakpoint-tablet: 809px;
+  --breakpoint-desktop: 1200px;
+
+  /* Transition tokens (used by custom utility classes below) */
+  --ease-in-out: cubic-bezier(0.44, 0, 0.56, 1);
+  --duration-ease-in-out: 450ms;
+  --ease-spring: cubic-bezier(0.26, 0.92, 0.32, 1.03);
+  --duration-spring: 400ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom utilities (standard CSS, avoids editor "unknown at-rule" warnings) */
+.transition-ease-in-out {
+  transition-duration: var(--duration-ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  transition-delay: var(--transition-ease-in-out-delay);
+}
+
+.transition-spring {
+  transition-duration: var(--duration-spring);
+  transition-timing-function: var(--ease-spring);
+  transition-delay: var(--transition-spring-delay);
+}
+
+.bg-black {
+  background-color: var(--color-black);
+}
+.bg-white {
+  background-color: var(--color-white);
+}
+.bg-gray-1 {
+  background-color: var(--color-gray-1);
+}
+.bg-gray-2 {
+  background-color: var(--color-gray-2);
+}
+.bg-dark-1 {
+  background-color: var(--color-dark-1);
+}
+/* Footer: full-area Dark 1 linear ramp */
+.bg-footer-dark-gradient {
+  background-color: var(--color-dark-1);
+  background-image: linear-gradient(
+    180deg,
+    #3d2101 0%,
+    #4b2b07 25%,
+    #57350f 50%,
+    #4b2b07 75%,
+    #3d2101 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.bg-dark-2 {
+  background-color: var(--color-dark-2);
+}
+.bg-dark-3 {
+  background-color: var(--color-dark-3);
+}
+.bg-dark-4 {
+  background-color: var(--color-dark-4);
+}
+.bg-primary-1 {
+  background-color: var(--color-primary-1);
+}
+.bg-primary-2 {
+  background-color: var(--color-primary-2);
+}
+.bg-primary-3 {
+  background-color: var(--color-primary-3);
+}
+.bg-primary-4 {
+  background-color: var(--color-primary-4);
+}
+.bg-primary-5 {
+  background-color: var(--color-primary-5);
+}
+.bg-primary-6 {
+  background-color: var(--color-primary-6);
+}
+.bg-primary-7 {
+  background-color: var(--color-primary-7);
+}
+.bg-primary-8 {
+  background-color: var(--color-primary-8);
+}
+.bg-primary-9 {
+  background-color: var(--color-primary-9);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+.text-white {
+  color: var(--color-white);
+}
+.text-gray-1 {
+  color: var(--color-gray-1);
+}
+.text-gray-2 {
+  color: var(--color-gray-2);
+}
+.text-dark-1 {
+  color: var(--color-dark-1);
+}
+.text-dark-2 {
+  color: var(--color-dark-2);
+}
+.text-dark-3 {
+  color: var(--color-dark-3);
+}
+.text-dark-4 {
+  color: var(--color-dark-4);
+}
+.text-primary-1 {
+  color: var(--color-primary-1);
+}
+.text-primary-2 {
+  color: var(--color-primary-2);
+}
+.text-primary-3 {
+  color: var(--color-primary-3);
+}
+.text-primary-4 {
+  color: var(--color-primary-4);
+}
+.text-primary-5 {
+  color: var(--color-primary-5);
+}
+.text-primary-6 {
+  color: var(--color-primary-6);
+}
+.text-primary-7 {
+  color: var(--color-primary-7);
+}
+.text-primary-8 {
+  color: var(--color-primary-8);
+}
+.text-primary-9 {
+  color: var(--color-primary-9);
+}
+
+/* Footer: bottom strip — tiled SVG (asset is 120t tall but shapes only reach y≈113; bottom band is empty) */
+.footer-shape-bottom {
+  background-color: var(--color-dark-1);
+  background-image: url("https://framerusercontent.com/images/xIlKOpnZpPGOYKJpDIxVpP6mfM.svg?width=80&height=120");
+  background-repeat: repeat-x;
+  background-position: left top;
+  /*
+   * Scale tile height to 100%×120/113 so the drawn squares fill the strip; overflow clips the empty
+   * bottom slice of the asset (transparent vs page bg looked like a “gap”).
+   */
+  background-size: auto calc(100% * 120 / 113);
+  display: block;
+  line-height: 0;
+  overflow: hidden;
+}
+
+/* About (top of #about-us): pattern-08 — same tiling model as `.footer-shape-bottom`, Framer “Tile” / top-left */
+.home-about-pattern {
+  background-image: url("https://framerusercontent.com/images/slmLs0po84gLd8nL9dBmIPqHZE.svg?width=80&height=120");
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: auto calc(100% * 120 / 113);
+  display: block;
+  line-height: 0;
+  overflow: hidden;
+}
+
+/* About (under gallery ticker): pattern-09 — Framer Fill “Tile”, position top-left (not cover/center); tile height matches other 120-t SVG strips */
+.home-about-pattern-09 {
+  background-image: url("https://framerusercontent.com/images/xyZSkekGo8RFDnkfNazSspMOWg.svg?width=80&height=120");
+  background-repeat: repeat;
+  background-position: left top;
+  background-size: auto calc(100% * 120 / 113);
+  display: block;
+  line-height: 0;
+  overflow: visible;
+}
+
+/* Location Instagram (under #location): pattern-09 tile */
+.home-location-instagram-pattern {
+  background-image: url("https://framerusercontent.com/images/xyZSkekGo8RFDnkfNazSspMOWg.svg?width=80&height=120");
+  background-repeat: repeat;
+  background-position: left top;
+  background-size: auto calc(100% * 120 / 113);
+  display: block;
+  line-height: 0;
+  overflow: visible;
+}
+
+/* Offer (#offer): pattern-06 — same tiling model as `.home-about-pattern-09`, Framer “Tile” / top-left */
+.home-offer-pattern {
+  background-image: url("https://framerusercontent.com/images/Hh57BfUWveKzslVRsKYFt6hXOok.svg?width=80&height=120");
+  background-repeat: repeat;
+  background-position: left top;
+  background-size: auto calc(100% * 120 / 113);
+  display: block;
+  line-height: 0;
+  overflow: visible;
+}
+
+/* Testimonials (top of #testimonials): pattern-08 — same tiled model as about/footer strips */
+.home-testimonials-shape {
+  background-image: url("https://framerusercontent.com/images/slmLs0po84gLd8nL9dBmIPqHZE.svg?width=80&height=120");
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: auto calc(100% * 120 / 113);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +284,16 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+/* Lenis handles smoothing; native smooth scroll would stack with it */
+html {
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

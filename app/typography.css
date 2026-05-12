@@ -1,0 +1,449 @@
+/*
+  SliceTown text styles — Calistoga (headings, button, nav) + Inter Display (body, leads, small).
+  Breakpoints: S default, M min 810px, L min 1200px (matches spec; layout tablet is 809px).
+  "letter 1em" in spec → tracking 0.01em (readable; adjust if your Figma used different units).
+*/
+
+@layer components {
+  /* --- Headings (Calistoga, regular, Dark 1) --- */
+  .type-h1 {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 72px;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 810px) {
+    .type-h1 {
+      font-size: 160px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-h1 {
+      font-size: 240px;
+    }
+  }
+
+  .type-h2 {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 30px;
+  }
+
+  @media (min-width: 810px) {
+    .type-h2 {
+      font-size: 40px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-h2 {
+      font-size: 68px;
+    }
+  }
+
+  .type-h3 {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 810px) {
+    .type-h3 {
+      font-size: 36px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-h3 {
+      font-size: 48px;
+    }
+  }
+
+  .type-h4 {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 22px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 810px) {
+    .type-h4 {
+      font-size: 30px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-h4 {
+      font-size: 34px;
+    }
+  }
+
+  .type-h5 {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 810px) {
+    .type-h5 {
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-h5 {
+      font-size: 28px;
+    }
+  }
+
+  .type-h6 {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 810px) {
+    .type-h6 {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-h6 {
+      font-size: 18px;
+    }
+  }
+
+  .type-heading-small {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 8px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 810px) {
+    .type-heading-small {
+      font-size: 8px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-heading-small {
+      font-size: 12px;
+    }
+  }
+
+  /* --- Inter Display: body & UI --- */
+  .type-body {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+
+  .type-body :is(strong, b) {
+    font-weight: 700;
+  }
+
+  .type-body :is(em, i) {
+    font-style: italic;
+  }
+
+  @media (min-width: 810px) {
+    .type-body {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-body {
+      font-size: 18px;
+    }
+  }
+
+  .type-button {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-black);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 18px;
+    text-decoration: none;
+    text-decoration-line: none;
+  }
+
+  @media (min-width: 810px) {
+    .type-button {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-button {
+      font-size: 20px;
+    }
+  }
+
+  .type-nav {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 810px) {
+    .type-nav {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-nav {
+      font-size: 18px;
+    }
+  }
+
+  .type-text-lead {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .type-text-lead :is(strong, b) {
+    font-weight: 700;
+  }
+
+  .type-text-lead :is(em, i) {
+    font-style: italic;
+  }
+
+  @media (min-width: 810px) {
+    .type-text-lead {
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-text-lead {
+      font-size: 24px;
+    }
+  }
+
+  .type-text-lead-bold {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .type-text-lead-bold :is(strong, b) {
+    font-weight: 800;
+  }
+
+  .type-text-lead-bold :is(em, i) {
+    font-style: italic;
+  }
+
+  @media (min-width: 810px) {
+    .type-text-lead-bold {
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-text-lead-bold {
+      font-size: 24px;
+    }
+  }
+
+  .type-text-small {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .type-text-small :is(strong, b) {
+    font-weight: 700;
+  }
+
+  .type-text-small :is(em, i) {
+    font-style: italic;
+  }
+
+  @media (min-width: 810px) {
+    .type-text-small {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-text-small {
+      font-size: 16px;
+    }
+  }
+
+  .type-text-xs {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .type-text-xs :is(strong, b) {
+    font-weight: 700;
+  }
+
+  .type-text-xs :is(em, i) {
+    font-style: italic;
+  }
+
+  @media (min-width: 810px) {
+    .type-text-xs {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .type-text-xs {
+      font-size: 14px;
+    }
+  }
+
+  .type-text-xs-bold {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    color: var(--color-dark-1);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .type-text-xs-bold :is(strong, b) {
+    font-weight: 700;
+  }
+
+  .type-text-xs-bold :is(em, i) {
+    font-style: italic;
+  }
+}
