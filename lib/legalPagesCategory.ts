@@ -1,5 +1,5 @@
 const DEFAULT_LEGAL_PAGES_URL =
-  "http://localhost:5173/api/public/v1/projects/slice-town/categories/legal-pages";
+  "http://localhost:5173/api/public/v1/projects/p-mp4ielp1-2/categories/cat-mp4ifmr6-3y";
 
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null && !Array.isArray(v);
