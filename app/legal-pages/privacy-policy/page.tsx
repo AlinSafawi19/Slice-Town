@@ -41,14 +41,6 @@ export default async function PrivacyPolicyPage() {
                     Privacy Policy
                   </h1>
                 </InViewReveal>
-                <p className="type-body legal-hero-date-text legal-hero-load-error">
-                  This page could not be loaded from the CMS. Set{" "}
-                  <code className="legal-privacy-inline-code">CMS_LEGAL_PAGES_URL</code> if your
-                  API is not at the default host, and ensure the legal-pages category includes a
-                  privacy policy entry (
-                  <code className="legal-privacy-inline-code">slug: privacy-policy</code> or title
-                  containing &quot;Privacy Policy&quot;).
-                </p>
               </div>
             </div>
           </section>

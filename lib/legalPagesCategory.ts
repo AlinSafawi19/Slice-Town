@@ -176,35 +176,45 @@ export type FetchLegalCategoryResult =
 export async function fetchPrivacyPolicyFromLegalCategory(
   requestUrl?: string,
 ): Promise<FetchLegalCategoryResult> {
-  const url = requestUrl ?? process.env.CMS_LEGAL_PAGES_URL ?? DEFAULT_LEGAL_PAGES_URL;
+  const url =
+    requestUrl ??
+    process.env.CMS_LEGAL_PAGES_URL?.trim() ??
+    DEFAULT_LEGAL_PAGES_URL;
 
-  let res: Response;
-  try {
-    res = await fetch(url, {
-      next: { revalidate: 120 },
-      headers: { Accept: "application/json" },
-    });
-  } catch {
+  if (!url) {
     return { ok: false, reason: "fetch" };
   }
 
-  if (!res.ok) return { ok: false, reason: "fetch" };
-
-  let payload: unknown;
   try {
-    payload = await res.json();
-  } catch {
-    return { ok: false, reason: "json" };
+    const res = await fetch(url, {
+      next: { revalidate: 120 },
+      headers: { Accept: "application/json" },
+    });
+
+    if (!res.ok) {
+      console.warn(`Legal pages API failed (${res.status}).`);
+      return { ok: false, reason: "fetch" };
+    }
+
+    let payload: unknown;
+    try {
+      payload = await res.json();
+    } catch {
+      return { ok: false, reason: "json" };
+    }
+
+    const entries = collectEntriesFromPayload(payload).map(normalizeCmsEntry);
+    if (!entries.length) return { ok: false, reason: "empty" };
+
+    const chosen = selectPrivacyPolicyEntry(entries);
+    if (!chosen) return { ok: false, reason: "no_privacy_entry" };
+
+    const entry = resolveEntry(chosen);
+    if (!entry) return { ok: false, reason: "no_privacy_entry" };
+
+    return { ok: true, entry };
+  } catch (error) {
+    console.warn("Legal pages API unreachable.", error);
+    return { ok: false, reason: "fetch" };
   }
-
-  const entries = collectEntriesFromPayload(payload).map(normalizeCmsEntry);
-  if (!entries.length) return { ok: false, reason: "empty" };
-
-  const chosen = selectPrivacyPolicyEntry(entries);
-  if (!chosen) return { ok: false, reason: "no_privacy_entry" };
-
-  const entry = resolveEntry(chosen);
-  if (!entry) return { ok: false, reason: "no_privacy_entry" };
-
-  return { ok: true, entry };
 }

@@ -214,17 +214,6 @@
   border-radius: 0;
 }
 
-.legal-hero-load-error {
-  max-width: 42rem;
-  text-align: center;
-}
-
-@supports (text-wrap: balance) {
-  .legal-hero-load-error {
-    text-wrap: balance;
-  }
-}
-
 .legal-hero-date-text {
   width: auto;
   height: auto;
