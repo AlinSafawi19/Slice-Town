@@ -11,12 +11,16 @@ export function InstagramVideoCard({ src }: InstagramVideoCardProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleLoadedMetadata = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    // Seeking to a tiny offset forces the browser to decode and paint the first
-    // frame, so users see a preview instead of a black box before they tap play.
-    video.currentTime = 0.001;
+  // Tracks whether we have already auto-paused the initial muted autoplay.
+  // After that first pause every subsequent onPlay event (user-initiated or loop)
+  // must be left alone.
+  const didInitialPauseRef = useRef(false);
+
+  const handlePlay = () => {
+    if (!didInitialPauseRef.current) {
+      didInitialPauseRef.current = true;
+      videoRef.current?.pause();
+    }
   };
 
   const togglePlayback = async () => {
@@ -24,7 +28,6 @@ export function InstagramVideoCard({ src }: InstagramVideoCardProps) {
     if (!video) return;
 
     if (video.paused) {
-      video.currentTime = 0;
       try {
         await video.play();
         setIsPlaying(true);
@@ -45,11 +48,11 @@ export function InstagramVideoCard({ src }: InstagramVideoCardProps) {
           ref={videoRef}
           className="instagram-video"
           src={src}
+          autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
-          onLoadedMetadata={handleLoadedMetadata}
+          onPlay={handlePlay}
         />
       </div>
       {isPlaying ? (
