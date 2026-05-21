@@ -1,5 +1,5 @@
 const DEFAULT_LEGAL_PAGES_URL =
-  "http://localhost:5173/api/public/v1/projects/p-mp4ielp1-2/categories/cat-mp91ii8d-1";
+  "https://cms-api-production-e357.up.railway.app/api/public/v1/projects/prj-mpf7ktu6-1x/categories/cat-mpf8o1ly-1";
 
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null && !Array.isArray(v);

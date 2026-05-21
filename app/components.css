@@ -1261,8 +1261,8 @@
 
 .home-reservation-card .home-reservation-form-list .form-btn {
   width: fit-content;
-  justify-self: start;
-  margin-inline: 0;
+  justify-self: center;
+  margin-inline: auto;
 }
 
 /* Reservation — label wraps inside form list */
@@ -1342,6 +1342,21 @@
   opacity: 1;
   filter: invert(62%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(92%)
     contrast(90%);
+}
+
+/* Prevent date/time inputs from overflowing their grid column on mobile.
+   Browsers impose a minimum width on date/time inputs; this constrains them. */
+.home-reservation-card .home-reservation-form-list .label-wrap {
+  min-width: 0;
+  width: 100%;
+}
+
+.home-reservation-card .home-reservation-input[type="date"],
+.home-reservation-card .home-reservation-input[type="time"] {
+  min-width: 0;
+  max-width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 @media (min-width: 809px) {
@@ -4124,6 +4139,10 @@
   .nav-outer {
     z-index: 2210;
     padding: 16px;
+    background-color: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -4326,6 +4345,7 @@
 
 .nav-menu-bar {
   pointer-events: none;
+  display: block;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -4336,7 +4356,6 @@
   background-color: var(--color-black);
   opacity: 1;
   transform-origin: center;
-  will-change: transform;
   transition: transform 180ms ease-out;
 }
 
@@ -5649,6 +5668,32 @@
   top: 20px;
   right: 20px;
   z-index: 2;
+}
+
+/* InstagramVideoCard — reliable cross-browser video layout */
+.instagram-video-card {
+  /* Button placed after shell in DOM so it naturally sits on top. */
+}
+
+.instagram-video-shell {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.instagram-video-card-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+@media (min-width: 809px) {
+  .instagram-video-card-btn {
+    top: 30px;
+    right: 30px;
+  }
 }
 
 /* --- Marquee --- */

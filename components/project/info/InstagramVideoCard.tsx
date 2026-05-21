@@ -30,13 +30,8 @@ export function InstagramVideoCard({ src }: InstagramVideoCardProps) {
   };
 
   return (
-    <article className="instagram-item">
-      {isPlaying ? (
-        <PauseButton className="instagram-btn-pos-desktop" onClick={togglePlayback} />
-      ) : (
-        <PlayButtonPrimary className="instagram-btn-pos-desktop" onClick={togglePlayback} />
-      )}
-      <div className="instagram-media-shell">
+    <article className="instagram-item instagram-video-card">
+      <div className="instagram-video-shell">
         <video
           ref={videoRef}
           className="instagram-video"
@@ -47,6 +42,11 @@ export function InstagramVideoCard({ src }: InstagramVideoCardProps) {
           preload="metadata"
         />
       </div>
+      {isPlaying ? (
+        <PauseButton className="instagram-video-card-btn" onClick={togglePlayback} />
+      ) : (
+        <PlayButtonPrimary className="instagram-video-card-btn" onClick={togglePlayback} />
+      )}
     </article>
   );
 }

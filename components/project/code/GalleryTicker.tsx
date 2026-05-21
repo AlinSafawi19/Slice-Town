@@ -67,10 +67,16 @@ export default function GalleryTicker(props: GalleryTickerProps) {
 
     function measure(): void {
       const first = itemRefs.current[0];
+      const second = itemRefs.current[1];
       const last = itemRefs.current[itemCount - 1];
       if (!first || !last || itemCount < 1) return;
-      const span =
-        last.offsetLeft + last.offsetWidth - first.offsetLeft;
+      let span = last.offsetLeft + last.offsetWidth - first.offsetLeft;
+      // Include the trailing gap so the seam between the last item of one copy
+      // and the first item of the next is identical to the gap between other items.
+      if (second && itemCount > 1) {
+        const gap = second.offsetLeft - (first.offsetLeft + first.offsetWidth);
+        if (gap > 0) span += gap;
+      }
       if (span > 0) {
         setLoopSpanPx(span);
       } else {
@@ -129,10 +135,11 @@ export default function GalleryTicker(props: GalleryTickerProps) {
     };
   }, [speedSeconds, pixelsPerSecond, speedMultiplier, loopSpanPx]);
 
-  // Get container width
+  // Get container width — useLayoutEffect so the value is ready before the first
+  // animated frame, avoiding a brief window where only 2 copies exist on screen.
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [containerWidth, setContainerWidth] = useState(0);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = containerRef.current;
     if (!el) return;
     const update = () => setContainerWidth(el.offsetWidth || 0);
@@ -142,13 +149,14 @@ export default function GalleryTicker(props: GalleryTickerProps) {
     return () => ro.disconnect();
   }, [items.length]);
 
-  // How many times to repeat to fill at least 2x container width
+  // How many times to repeat to fill at least 2x container width.
+  // Start with at least 5 copies so the ticker is fully populated before
+  // loopSpanPx / containerWidth are both measured.
   const repeatCount =
     loopSpanPx > 0 && containerWidth > 0
       ? Math.ceil((containerWidth * 2) / loopSpanPx)
-      : 2;
-  // Always render at least 2 sets for seamless loop
-  const totalRepeat = Math.max(2, repeatCount);
+      : 5;
+  const totalRepeat = Math.max(5, repeatCount);
 
   const tickerItems = useMemo(() => {
     if (items.length === 0) return [];
