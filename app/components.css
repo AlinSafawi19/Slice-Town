@@ -4139,10 +4139,6 @@
   .nav-outer {
     z-index: 2210;
     padding: 16px;
-    background-color: rgba(255, 255, 255, 0.92);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -4353,7 +4349,7 @@
   height: 2px;
   width: 22px;
   border-radius: 4px;
-  background-color: var(--color-black);
+  background-color: #000000;
   opacity: 1;
   transform-origin: center;
   transition: transform 180ms ease-out;
