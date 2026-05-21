@@ -11,11 +11,20 @@ export function InstagramVideoCard({ src }: InstagramVideoCardProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const handleLoadedMetadata = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Seeking to a tiny offset forces the browser to decode and paint the first
+    // frame, so users see a preview instead of a black box before they tap play.
+    video.currentTime = 0.001;
+  };
+
   const togglePlayback = async () => {
     const video = videoRef.current;
     if (!video) return;
 
     if (video.paused) {
+      video.currentTime = 0;
       try {
         await video.play();
         setIsPlaying(true);
@@ -40,6 +49,7 @@ export function InstagramVideoCard({ src }: InstagramVideoCardProps) {
           loop
           playsInline
           preload="metadata"
+          onLoadedMetadata={handleLoadedMetadata}
         />
       </div>
       {isPlaying ? (
