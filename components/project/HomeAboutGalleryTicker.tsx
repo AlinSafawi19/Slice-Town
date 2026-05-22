@@ -63,7 +63,7 @@ const ABOUT_GALLERY_TICKER_ITEMS: AboutTickerItem[] = [
   },
 ];
 
-/** Single horizontal row: Framer y-values were two bands on the artboard; we only use x for order and w/h/rotate for each frame. */
+/** Single horizontal row sorted by x; each frame has w/h/rotate. */
 const ABOUT_GALLERY_TICKER_ROW = [...ABOUT_GALLERY_TICKER_ITEMS].sort(
   (a, b) => a.x - b.x,
 );
@@ -95,7 +95,7 @@ function AboutTickerImage({
   );
 }
 
-/** One loop segment: six frames in one horizontal line (left → right by Framer x). */
+/** One loop segment: six frames in one horizontal line (left → right by x). */
 function AboutGalleryTickerSegment() {
   return (
     <div className="home-about-ticker-segment" aria-hidden>

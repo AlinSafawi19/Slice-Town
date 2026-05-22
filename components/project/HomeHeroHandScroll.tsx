@@ -9,26 +9,26 @@ import {
   type MutableRefObject,
 } from "react";
 
-/** Framer scroll-transform design canvas (px). */
+/** Design canvas reference width (px). */
 const DESIGN_W = 1920;
 const OFFSET_X = 1000;
 const OFFSET_Y = 500;
-/** Primary hero title: From offset 0 → To offset X -350 (Framer scroll transform). */
+/** Primary hero title: From offset 0 → To offset X -350. */
 const TITLE_OFFSET_X = -350;
 /** Secondary hero title: From offset 0 → To offset X +350. */
 const TITLE_SECONDARY_OFFSET_X = 350;
 /**
- * Pepper shape (`.home-hero-shape-one`) and about `#about-shape-01` (Framer Section #01):
+ * Pepper shape (`.home-hero-shape-one`) and about `#about-shape-01`:
  * From scale 1.5, offset (-250, 250) → To scale 1, offset (0, 0).
  */
 const SHAPE_ONE_FROM_SCALE = 1.5;
 const SHAPE_ONE_FROM_OFFSET_X = -250;
 const SHAPE_ONE_FROM_OFFSET_Y = 250;
-/** About `#about-shape-02`: same Section #01 scroll as shape 01; From scale 1.5, offset (350, 350) → To (0, 0). */
+/** About `#about-shape-02`: same scroll as shape 01; From scale 1.5, offset (350, 350) → To (0, 0). */
 const ABOUT_SHAPE_02_FROM_SCALE = 1.5;
 const ABOUT_SHAPE_02_FROM_OFFSET_X = 350;
 const ABOUT_SHAPE_02_FROM_OFFSET_Y = 350;
-/** Basil shape (`.home-hero-shape-two`): Framer From scale 1.5, offset (250, 250) → To scale 1, offset (0, 0). */
+/** Basil shape (`.home-hero-shape-two`): From scale 1.5, offset (250, 250) → To scale 1, offset (0, 0). */
 const SHAPE_TWO_FROM_SCALE = 1.5;
 const SHAPE_TWO_FROM_OFFSET_X = 250;
 const SHAPE_TWO_FROM_OFFSET_Y = 250;
@@ -41,7 +41,7 @@ const SHAPE_TWO_FROM_OFFSET_Y = 250;
 const HERO_TRANSFORM_SCROLL_EXTRA_VH = 1.25;
 /** Lenis `animatedScroll` / `window.scrollY` at or below this counts as “hero at document top”. */
 const DOC_REST_SCROLL_MAX = 72;
-/** Reservation section: Framer From offsetY 0 -> To offsetY -1400. */
+/** Reservation section: From offsetY 0 -> To offsetY -1400. */
 const RESERVATION_TO_OFFSET_Y = -1400;
 
 function clamp01(n: number) {
@@ -65,7 +65,7 @@ function rawProgressForImageSection(): number | null {
   return clamp01((vh - rect.top) / span);
 }
 
-/** Raw 0→1 from `#about-shape-01` geometry vs viewport (Framer: Section in View, #01). */
+/** Raw 0→1 from `#about-shape-01` geometry vs viewport (Section in View). */
 function rawProgressForAboutScrollSection(): number {
   const el = document.getElementById("about-shape-01");
   if (!el) return 0;
@@ -78,7 +78,7 @@ function rawProgressForAboutScrollSection(): number {
 }
 
 /**
- * #menu-shape-01: Framer-style Section in View (viewport middle).
+ * #menu-shape-01: Section in View (viewport middle).
  * p=0 when the shape’s top reaches the bottom of the viewport (just entering from below).
  * p=1 when its vertical center hits the viewport midline — full From→To without having
  * to scroll the element off-screen (unlike hero `vh + min(h, …)` span).
@@ -95,7 +95,7 @@ function rawProgressForMenuShapeScrollSection(): number {
   return clamp01((vh - rect.top) / denom);
 }
 
-/** Reservation section (#reservation): Framer "Section in View" style progress. */
+/** Reservation section (#reservation): Section in View style progress. */
 function rawProgressForReservationScrollSection(): number {
   const el = document.getElementById("reservation");
   if (!el) return 0;
@@ -251,7 +251,7 @@ function setAboutShape02ScrollTransform(p: number, reducedMotion: boolean) {
   root.style.setProperty("--about-shape-two-ty", `${ty}px`);
 }
 
-/** `.home-menu-shape-one` / `#menu-shape-01`: same From→To as hero shape one (Framer scroll). */
+/** `.home-menu-shape-one` / `#menu-shape-01`: same From→To as hero shape one. */
 function setMenuShapeOneScrollTransform(p: number, reducedMotion: boolean) {
   const root = document.getElementById("menu-shape-01");
   if (!root) return;
@@ -274,7 +274,7 @@ function setMenuShapeOneScrollTransform(p: number, reducedMotion: boolean) {
 
 /**
  * `.home-menu-shape-two`: same scroll `p` as `#menu-shape-01` (Section in View, viewport middle).
- * Framer From: scale 1.5, offset (250, 250) → To: (0, 0), scale 1 (matches hero basil constants).
+ * From: scale 1.5, offset (250, 250) → To: (0, 0), scale 1 (matches hero basil constants).
  */
 function setMenuShapeTwoScrollTransform(p: number, reducedMotion: boolean) {
   const root = document.querySelector(".home-menu-shape-two");
@@ -316,7 +316,7 @@ function setReservationScrollTransform(p: number, reducedMotion: boolean) {
 /**
  * Scroll-linked transforms (Lenis / rAF spring ~0.28):
  * - `.home-hero-image-hand` + titles + hero shapes: section `#image`
- * - `#about-shape-01` / `#about-shape-02`: shared progress from `#about-shape-01` box (Framer Section #01)
+ * - `#about-shape-01` / `#about-shape-02`: shared progress from `#about-shape-01` box
  * - `#menu-shape-01`: menu decorative shapes (raw 0→1 from this node; `.home-menu-shape-two` shares same `p`)
  */
 export function HomeHeroHandScroll() {

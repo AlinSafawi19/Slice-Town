@@ -169,27 +169,6 @@ export function Footer({
             <div className="footer-rule" />
 
             <div className="footer-legal-row">
-              <p className="type-body type-case-none footer-legal-copy">
-                Designed by{" "}
-                <a
-                  href="https://webestica.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="link-copyright"
-                >
-                  Webestica
-                </a>
-                , Powered by{" "}
-                <a
-                  href="https://www.framer.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="link-copyright"
-                >
-                  Framer
-                </a>
-              </p>
-
               <p className="type-body type-case-none footer-legal-link-wrap">
                 <Link
                   href="/legal-pages/privacy-policy"

@@ -192,7 +192,7 @@
   white-space: pre-wrap;
   overflow-wrap: break-word;
   word-break: break-word;
-  color: var(--Primary_1, #fab037);
+  color: var(--color-primary-1, #fab037);
   text-align: center;
   line-height: 1.2;
   position: relative;
@@ -225,7 +225,7 @@
   position: relative;
 }
 
-/* On appear: opacity 0 → 1, offset Y 30 → 0, spring (Framer enter; matches not-found copy). */
+/* On appear: opacity 0 → 1, offset Y 30 → 0, spring. */
 .legal-hero-heading-reveal.in-view-reveal {
   width: 100%;
   min-width: 0;
@@ -607,7 +607,7 @@
   font-weight: 400;
   font-style: normal;
   font-family: var(--font-heading);
-  color: var(--Primary_1, #fab037);
+  color: var(--color-primary-1, #fab037);
   font-size: 120px;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -629,7 +629,7 @@
   }
 }
 
-/* On appear: opacity 0 → 1, offset Y 30 → 0, spring (matches Framer enter). */
+/* On appear: opacity 0 → 1, offset Y 30 → 0, spring. */
 .not-found-hero-digit-reveal.in-view-reveal {
   display: flex;
   align-items: center;
@@ -661,7 +661,7 @@
   transform: translateY(0);
 }
 
-/* Pizza “0”: on appear opacity 0 → 1, scale 1.25 → 1, spring (Framer enter). */
+/* Pizza “0”: on appear opacity 0 → 1, scale 1.25 → 1, spring. */
 .not-found-hero-image-reveal.in-view-reveal {
   display: flex;
   align-items: center;
@@ -1170,7 +1170,7 @@
   }
 }
 
-/* Reservation — section title row + heading (Framer Heading 2) */
+/* Reservation — section title row + heading */
 .home-reservation-section-title {
   width: 100%;
   height: min-content;
@@ -1192,7 +1192,7 @@
   width: 1px;
   min-width: 0;
   height: auto;
-  color: var(--Primary_1, #fab037);
+  color: var(--color-primary-1, #fab037);
   text-align: center;
   line-height: 1.2;
   position: relative;
@@ -1216,7 +1216,7 @@
   width: 100%;
 }
 
-/* Reservation — card shell (replaces Framer form frame; no InViewReveal) */
+/* Reservation — card shell (no InViewReveal) */
 .home-reservation-card {
   --home-reservation-card-shadow:
     -0.3613123810646357px 0.3613123810646357px 0 0 rgb(0 0 0 / 6%),
@@ -1296,8 +1296,8 @@
   position: relative;
   font-family: var(--font-body);
   color: var(--Black, #000000);
-  background: var(--White, #ffffff);
-  border: 1px solid var(--White, #ffffff);
+  background: var(--color-white, #ffffff);
+  border: 1px solid var(--color-white, #ffffff);
   border-radius: 10px;
   opacity: 1;
   transition: border-color var(--transition-ease-in-out), box-shadow var(--transition-ease-in-out);
@@ -2350,7 +2350,7 @@
   }
 }
 
-/* Offer — container (Framer `--container--`) */
+/* Offer — container */
 .home-offer-container {
   box-sizing: border-box;
   width: 100%;
@@ -2406,7 +2406,7 @@
   }
 }
 
-/* Offer — block below menu (Framer: same flex stack on mobile / tablet / desktop) */
+/* Offer — block below menu (same flex stack on mobile / tablet / desktop) */
 .home-offer-offer {
   box-sizing: border-box;
   width: 100%;
@@ -2746,7 +2746,7 @@
   max-width: 100%;
 }
 
-/* Offer title scroll reveal (Framer: Layer in View — opacity 0, offset y 30, spring; replay off). */
+/* Offer title scroll reveal (Layer in View — opacity 0, offset y 30, spring; replay off). */
 .home-offer-menu-title-wrap .home-offer-title-reveal.in-view-reveal {
   transform: translateY(30px);
 }
@@ -2944,7 +2944,7 @@
   min-width: 0;
   height: auto;
   margin-bottom: 0;
-  color: var(--Primary_1, #fab037);
+  color: var(--color-primary-1, #fab037);
   text-align: left;
   line-height: 1.2;
   position: relative;
@@ -3120,7 +3120,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-word;
-  color: var(--White, #ffffff);
+  color: var(--color-white, #ffffff);
   text-align: left;
   line-height: 1.2;
   position: relative;
@@ -3158,7 +3158,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-word;
-  color: var(--White, #ffffff);
+  color: var(--color-white, #ffffff);
   text-align: left;
   line-height: 1.2;
   position: relative;
@@ -3191,7 +3191,7 @@
   border-radius: 0;
 }
 
-/* Menu list rows: full column width; undo Framer canvas offsets on --single */
+/* Menu list rows: full column width on --single */
 .home-menu-item-list .menu-list-item {
   width: 100%;
   max-width: 100%;
@@ -3202,7 +3202,7 @@
   top: auto;
 }
 
-/* About inner column (Framer): mobile 16px pad / tablet+ 30px; max-width 1260; z above decor (shapes z-1) */
+/* About inner column: mobile 16px pad / tablet+ 30px; max-width 1260; z above decor (shapes z-1) */
 .home-about-container {
   box-sizing: border-box;
   position: relative;
@@ -3248,7 +3248,7 @@
   align-items: center;
 }
 
-/* One horizontal strip: flex row (Framer y was two rows on artboard — not used here). */
+/* One horizontal strip: flex row. */
 .home-about-ticker-segment {
   position: relative;
   box-sizing: border-box;
@@ -3282,7 +3282,7 @@
   }
 }
 
-/* Framer frames, left→right by sorted `x` (see `ABOUT_GALLERY_TICKER_ROW`) */
+/* Gallery ticker frames, left→right by sorted `x` (see `ABOUT_GALLERY_TICKER_ROW`) */
 .home-about-ticker-img-wrap--f0 {
   width: 340px;
   height: 410px;
@@ -3391,7 +3391,7 @@
   line-height: 1.2;
 }
 
-/* About H2: Framer scroll “Layer in View”, enter opacity 0 + offset Y 30 → rest, spring, replay off */
+/* About H2: scroll “Layer in View”, enter opacity 0 + offset Y 30 → rest, spring, replay off */
 .home-about-title-wrap .home-about-title-reveal.in-view-reveal {
   width: 100%;
   transform: translateY(30px);
@@ -3429,7 +3429,7 @@
   }
 }
 
-/* Uber Eats CTA: Layer in View, enter opacity 0 + offset Y 30 → rest, spring, replay off (matches Framer) */
+/* Uber Eats CTA: Layer in View, enter opacity 0 + offset Y 30 → rest, spring, replay off */
 .home-about-content .home-about-ubereats-reveal.in-view-reveal {
   display: flex;
   width: 100%;
@@ -3473,7 +3473,7 @@
   }
 }
 
-/* Pattern strip under hero (Framer: mobile 18px / tablet+ 60px); pairs with globals `.home-about-pattern` */
+/* Pattern strip under hero (mobile 18px / tablet+ 60px); pairs with globals `.home-about-pattern` */
 .home-about-pattern-strip {
   box-sizing: border-box;
   position: relative;
@@ -3492,7 +3492,7 @@
   }
 }
 
-/* Pattern-09 strip under gallery ticker (Framer: 18px mobile+desktop artboard / 60px tablet); pairs with globals `.home-about-pattern-09` */
+/* Pattern-09 strip under gallery ticker (18px mobile+desktop / 60px tablet); pairs with globals `.home-about-pattern-09` */
 .home-about-pattern-09-strip {
   box-sizing: border-box;
   position: relative;
@@ -3511,7 +3511,7 @@
   }
 }
 
-/* Pattern-06 strip on #offer (Framer: mobile 18px / tablet+ 60px); pairs with globals `.home-offer-pattern` */
+/* Pattern-06 strip on #offer (mobile 18px / tablet+ 60px); pairs with globals `.home-offer-pattern` */
 .home-offer-pattern-strip {
   box-sizing: border-box;
   position: relative;
@@ -3530,7 +3530,7 @@
   }
 }
 
-/* About — vector-03 (Framer #01); hidden <809px; scroll transform Section #01 (same From→To as hero shape one) */
+/* About — vector-03; hidden <809px; scroll transform (same From→To as hero shape one) */
 .home-about-shape-one {
   display: none;
   box-sizing: border-box;
@@ -3542,7 +3542,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* Scroll transform (Framer #01): From scale 1.5, offset (-250, 250) → To scale 1, (0, 0); JS after hydrate */
+  /* Scroll transform: From scale 1.5, offset (-250, 250) → To scale 1, (0, 0); JS after hydrate */
   --about-shape-one-tx: calc(-250 * 100vw / 1920);
   --about-shape-one-ty: calc(250 * 100vw / 1920);
   --about-shape-one-scale: 1.5;
@@ -3625,7 +3625,7 @@
 }
 
 /*
-  Scroll driver for hand transform (Framer “Section #image”).
+  Scroll driver for hand transform.
   Out of flow so it does not reserve a gap; still fills .home-hero for scroll math.
 */
 .home-hero #image {
@@ -3689,7 +3689,7 @@
   position: absolute;
   left: 0;
   bottom: 277px;
-  /* Scroll transform (Framer #image): From → To; JS sets px after hydrate */
+  /* Scroll transform: From → To; JS sets px after hydrate */
   --shape-one-tx: calc(-250 * 100vw / 1920);
   --shape-one-ty: calc(250 * 100vw / 1920);
   --shape-one-scale: 1.5;
@@ -3734,7 +3734,7 @@
   position: absolute;
   right: 0;
   top: 110px;
-  /* Scroll transform (Framer #image): From → To; JS sets px after hydrate */
+  /* Scroll transform: From → To; JS sets px after hydrate */
   --shape-two-tx: calc(250 * 100vw / 1920);
   --shape-two-ty: calc(250 * 100vw / 1920);
   --shape-two-scale: 1.5;
@@ -3844,7 +3844,7 @@
   }
 }
 
-/* Mobile (max 808px): Framer pizza-03 block; desktop wide hero is hidden below */
+/* Mobile (max 808px): pizza-03 block; desktop wide hero is hidden below */
 .home-hero-mobile-hero {
   display: none;
 }
@@ -3895,7 +3895,7 @@
   }
 }
 
-/* Hero copy (Framer “text-content” + section title wrap + hero title rows) */
+/* Hero copy (section title wrap + hero title rows) */
 .home-hero-text-content {
   position: absolute;
   box-sizing: border-box;
@@ -5664,11 +5664,6 @@
   top: 20px;
   right: 20px;
   z-index: 2;
-}
-
-/* InstagramVideoCard — reliable cross-browser video layout */
-.instagram-video-card {
-  /* Button placed after shell in DOM so it naturally sits on top. */
 }
 
 .instagram-video-shell {

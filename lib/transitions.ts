@@ -9,7 +9,7 @@ export const easeInOut = {
 
 /**
  * Transition "Spring" — Time 0.4s, Bounce 0.2, Delay 0 (design panel).
- * Use `spring.motion` with Motion / Framer Motion for physics-accurate spring.
+ * Use `spring.motion` with Motion for physics-accurate spring.
  */
 export const spring = {
   name: "spring" as const,

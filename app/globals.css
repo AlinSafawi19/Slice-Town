@@ -52,9 +52,6 @@
   --color-dark-3: #57350f;
   --color-dark-4: #51381b;
   --color-primary-1: #fab037;
-  /* Framer export name (alias) */
-  --Primary_1: var(--color-primary-1);
-  --White: var(--color-white);
   --color-primary-2: #e57300;
   --color-primary-3: #ff9a27;
   --color-primary-4: #ffab36;
@@ -222,7 +219,7 @@
   overflow: hidden;
 }
 
-/* About (top of #about-us): pattern-08 — same tiling model as `.footer-shape-bottom`, Framer “Tile” / top-left */
+/* About (top of #about-us): pattern-08 — tiling model top-left */
 .home-about-pattern {
   background-image: url("https://framerusercontent.com/images/slmLs0po84gLd8nL9dBmIPqHZE.svg?width=80&height=120");
   background-repeat: repeat-x;
@@ -233,7 +230,7 @@
   overflow: hidden;
 }
 
-/* About (under gallery ticker): pattern-09 — Framer Fill “Tile”, position top-left (not cover/center); tile height matches other 120-t SVG strips */
+/* About (under gallery ticker): pattern-09 — fill tile, position top-left; tile height matches other 120-t SVG strips */
 .home-about-pattern-09 {
   background-image: url("https://framerusercontent.com/images/xyZSkekGo8RFDnkfNazSspMOWg.svg?width=80&height=120");
   background-repeat: repeat;
@@ -255,7 +252,7 @@
   overflow: visible;
 }
 
-/* Offer (#offer): pattern-06 — same tiling model as `.home-about-pattern-09`, Framer “Tile” / top-left */
+/* Offer (#offer): pattern-06 — same tiling model as `.home-about-pattern-09`, top-left */
 .home-offer-pattern {
   background-image: url("https://framerusercontent.com/images/Hh57BfUWveKzslVRsKYFt6hXOok.svg?width=80&height=120");
   background-repeat: repeat;

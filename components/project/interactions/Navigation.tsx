@@ -234,8 +234,7 @@ export type NavigationProps = {
 
 /**
  * Site header: desktop/tablet shows [nav links | logo | nav links]; mobile shows logo + hamburger
- * and a full-width link panel. Framer canvas “position” z values map to `1300` (tablet+) and
- * `2210` (mobile).
+ * and a full-width link panel. Z-index: `1300` (tablet+), `2210` (mobile).
  */
 export function Navigation({ className = "" }: NavigationProps) {
   const pathname = usePathname();

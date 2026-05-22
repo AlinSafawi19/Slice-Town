@@ -9,7 +9,7 @@ import {
   useState,
 } from "react";
 
-/** Framer “items ~1.75”: center card dominant, neighbors peek on both sides. */
+/** Center card dominant, neighbors peek on both sides. */
 const VISIBLE_ITEMS = 1.75;
 
 const OFFER_IMAGES = [

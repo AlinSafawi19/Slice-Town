@@ -199,7 +199,7 @@ export function OrderNowPrimary() {
     const target = document.getElementById(BUTTON_HIDE_SECTION_ID);
     if (!target) return;
 
-    /* Viewport “bottom” (Framer): shrink root from bottom so the section reads as in-view when it enters the main band. */
+    /* Shrink root from bottom so the section reads as in-view when it enters the main band. */
     const io = new IntersectionObserver(
       ([entry]) => {
         const intersecting = entry.isIntersecting;

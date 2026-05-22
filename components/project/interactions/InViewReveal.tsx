@@ -18,7 +18,7 @@ export function InViewReveal({
 }: {
   children?: ReactNode;
   className?: string;
-  /** Passed to `IntersectionObserver` (Framer-style “layer in view” tuning). */
+  /** Passed to `IntersectionObserver` for “layer in view” tuning. */
   rootMargin?: string;
   threshold?: number | number[];
 }) {
