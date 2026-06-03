@@ -1,5 +1,5 @@
 const DEFAULT_LEGAL_PAGES_URL =
-  "https://cms-api-production-e357.up.railway.app/api/public/v1/projects/prj-mpgoaakp-5o/categories/cat-mpgoaakp-5n";
+  "https://canopy-production-7f21.up.railway.app/api/v1/slice-town/legal-pages";
 
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null && !Array.isArray(v);
@@ -9,6 +9,12 @@ function pickString(obj: Record<string, unknown>, keys: string[]): string | null
   for (const k of keys) {
     const v = obj[k];
     if (typeof v === "string" && v.trim()) return v.trim();
+  }
+  const lowerKeys = keys.map((k) => k.toLowerCase());
+  for (const [objKey, v] of Object.entries(obj)) {
+    if (lowerKeys.includes(objKey.toLowerCase()) && typeof v === "string" && v.trim()) {
+      return v.trim();
+    }
   }
   return null;
 }
@@ -101,6 +107,7 @@ function resolveEntry(record: Record<string, unknown>): LegalPageEntryResolved |
       "updatedAt",
       "modified_at",
       "modifiedAt",
+      "updated date",
     ]) ?? null;
 
   let updatedDateLabel: string | null = null;
@@ -186,9 +193,13 @@ export async function fetchPrivacyPolicyFromLegalCategory(
   }
 
   try {
+    const apiKey = process.env.NEXT_PUBLIC_CMS_API_KEY ?? "";
     const res = await fetch(url, {
       next: { revalidate: 120 },
-      headers: { Accept: "application/json" },
+      headers: {
+        Accept: "application/json",
+        ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
+      },
     });
 
     if (!res.ok) {
