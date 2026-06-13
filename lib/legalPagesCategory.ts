@@ -1,7 +1,6 @@
-const DEFAULT_LEGAL_PAGES_URL =
-  process.env.NEXT_PUBLIC_CMS_BACKEND_URL
-    ? `${process.env.NEXT_PUBLIC_CMS_BACKEND_URL.replace(/\/$/, "")}/slice-town/legal-pages`
-    : "https://canopy-production-7f21.up.railway.app/api/v1/slice-town/legal-pages";
+const DEFAULT_LEGAL_PAGES_URL = process.env.NEXT_PUBLIC_CMS_BACKEND_URL
+  ? `${process.env.NEXT_PUBLIC_CMS_BACKEND_URL.replace(/\/$/, "")}/slice-town/legal-pages`
+  : undefined;
 
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null && !Array.isArray(v);
